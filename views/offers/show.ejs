@@ -1,0 +1,170 @@
+<% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/show.css">
+
+
+
+<div class="row">
+    <% if(offer.appliers.length==0 || !(currentUser && offer.author.equals(currentUser._id))){ %>
+    <div class="col-8 offset-2">
+        <% }else{ %>
+        <div class="col-8 p-0">
+            <% } %>
+            <div class="card rounded-0 shadow">
+                <div class="row card_top mb-0">
+                    <div class="col-2 pl-4 pt-4 mr-0">
+                        <img src="<%= offer.author.image.url%>" id="userImage" alt="...">
+                    </div>
+                    <div class="title col-6">
+                        <a href="/company/profile/<%=offer.author._id  %> ">
+                            <h3 class="c_name ml-0">
+                                <%=offer.author.username%>
+                            </h3>
+                            <h6 class="text-muted pr-3">(<%= offer.location%>)</h6>
+                        </a>
+
+                        <div class="mb-0 border-bottom border-top">
+                            <small class="text-muted ml-auto">
+                                <%= offer.dateAgo %>
+                            </small>
+                        </div>
+
+
+                    </div>
+                    <div class="col-1"></div>
+
+                    <% if(currentUser&&offer.author.equals(currentUser._id)){ %>
+                    <div class="col-3 align-self-center">
+                        <a class="card-link btn btn-outline-info" href="/offers/<%=offer._id%>/edit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                            </svg>
+                            <span>Edit</span>
+                        </a>
+                        <form class="d-inline" action="/offers/<%=offer._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-outline-danger ml-2 del">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                </svg>
+                                <span>Delete</span></button>
+                        </form>
+                    </div>
+                    <% } %>
+
+
+
+
+                    <% if(currentUser&&!currentUser.company){ %>
+                    <div class="col-3 align-self-end">
+
+
+                        <div class="">
+
+
+                            <% if(!isApplay){ %>
+
+                            <form action="/offers/<%= offer._id %>/appliers" method="POST">
+                                <button class="btn btn-outline-success">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-check-square-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z" />
+                                    </svg>
+                                    <span> Apply Now</span></button>
+                            </form>
+
+                            <% }else{ %>
+                            <form class="del-apply"
+                                action="/offers/<%= offer._id %>/appliers/<%= applierId %>?_method=DELETE"
+                                method="POST">
+                                <button class="btn btn-outline-danger d-flex align-items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-square mr-1" viewBox="0 0 16 16">
+                                        <path
+                                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                    <span>Cancel apply</span></button>
+                            </form>
+                            <% } %>
+
+                        </div>
+
+                    </div>
+                    <% } %>
+
+                </div>
+
+                <div class="card-body p-5">
+                    <h5 class="card-title">
+                        <%= offer.title%>
+                    </h5>
+
+                    <p class="card-text" style="white-space: pre-wrap;">
+                        <%= offer.description%>
+                    </p>
+
+
+
+
+                </div>
+
+                <div class="col-3 align-self-end">
+                    <% if(offer.appliers.length==0){ %>
+                    <div class="text-muted text-center border-top py-2">
+                        NO APPLIERS YET
+                    </div>
+                    <% }else{ %>
+                    <div class="text-muted text-center border-top py-2">
+                        <%= offer.appliers.length %> Appliers
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <% if(currentUser && offer.author.equals(currentUser._id)){ %>
+        <% if(offer.appliers.length !=0){ %>
+        <div class="container bg-light py-4 col-4 shadow rounded">
+            <div class="text-center mb-4 border-bottom">
+                <h4>Appliers</h4>
+            </div>
+            <% } %>
+
+            <% for (let applier of offer.appliers){ %>
+            <% if(currentUser&&applier.author.equals(currentUser._id)){ %>
+            <div class="row bg-primary p-2 m-1 rounded">
+                <h5 class="text-light col-9 pl-2">
+                    <%= applier.author.username %>
+                </h5>
+
+
+                <% }else{ %>
+                <div class="row m-0 mb-2 border-bottom p-1" data-aos="zoom-in-up"
+                    data-aos-anchor-placement="bottom-bottom">
+                    <div class="col-2 p-0 align-self-center" style="height: 40px; width: 40px;">
+                        <img src="<%= applier.author.image.url %> " alt="" style="border-radius: 50%; height: inherit; width: inherit;">
+                    </div>
+                    <a class="col-4 align-self-center" style="text-decoration: none;" href="/user/profile/<%= applier.author._id %>">
+                        <h6 class="col-9 py-2 m-0"><%= applier.author.username %></h6>
+                    </a>
+                    <div class="col-1"></div>
+                    <small class="col-5 text-muted text-center align-self-center mb-0 py-2"><%= applier.dateAgo %> </small>
+
+                    <% } %>
+
+                </div>
+                <% } %>
+            </div>
+            <% } %>
+
+        </div>

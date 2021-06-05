@@ -1,0 +1,141 @@
+<% layout('layouts/boilerplate')%>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="/stylesheets/profilec.css">
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-md-12 col-12">
+            <div class="card">
+                <div class="card-body text-white mailbox-widget p-0 rounded">
+                    <div class="row bg-dark">
+                        <div class="col-4 pr-0" style="height: 200px; position: relative;">
+                            <img class="card_img img-fluid" alt="" src="<%=u.image.url%>" data-aos="zoom-in"
+                                style="width: 100%; height: 100%; position: absolute;">
+                            <%  if (currentUser&& u.equals(currentUser)){ %>
+                            <form action="/company/profile/<%= u._id %>/changePhoto?_method=PUT" method="POST"
+                                enctype="multipart/form-data">
+                                <div class="file btn btn-lg btn-primary">
+                                    Change Photo
+                                    <input class="form-control" type="file" name="image" id="image"
+                                        onchange="form.submit()">
+                                </div>
+                            </form>
+                            <%}%>
+                        </div>
+                        <div class="card-tilte col-8 py-0 my-0">
+                            <h2 class="text-white px-3 pt-3">
+                                <%= u.fullName %>
+                            </h2>
+                            <h5 class="text-primary pb-5 px-3">
+                                <%= u.username %>
+                            </h5>
+                            <ul class="nav nav-tabs custom-tab border-bottom-0 mt-4" id="myTab" role="tablist">
+                                <li class="nav-item px-3">
+                                    <a class="nav-link active" id="profile" data-toggle="tab" aria-controls="inbox"
+                                        href="#inbox" role="tab" aria-selected="true">
+                                        <span class="d-block d-md-none"><i class="ti-email"></i></span>
+                                        <span class="d-none d-md-block"> Profile</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item px-3">
+                                    <a class="nav-link" id="my-offers" data-toggle="tab" aria-controls="sent"
+                                        href="#sent" role="tab" aria-selected="false">
+                                        <span class="d-block d-md-none"><i class="ti-export"></i></span>
+                                        <span class="d-none d-md-block">MY Offers</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content shadow" id="myTabContent">
+
+                <div class="tab-pane fade active show" id="inbox" aria-labelledby="profile" role="tabpanel">
+                    <div class="card bg-dark">
+                        <div class="row ">
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <div class=" bg-light rounded-top p-3" data-aos="flip-up">
+                                        <label class="form-label" for="fullName">Full Name</label>
+                                        <label class="form-control" for="fullName">
+                                            <%= u.fullName %>
+                                        </label>
+
+                                    </div>
+                                    <div class=" bg-light p-3 border-bottom-0" data-aos="flip-up">
+                                        <label class="form-label" for="username">Username</label>
+                                        <label class="form-control" for="username">
+                                            <%= u.username %>
+                                        </label>
+                                    </div>
+                                    <div class=" bg-light p-3 border-bottom-0" data-aos="flip-up">
+                                        <label class="form-label " for="email">Email</label>
+                                        <label class="form-control" for="fullName">
+                                            <%= u.email %>
+                                        </label>
+                                    </div>
+                                    <div class="mb-3 bg-light rounded-bottom p-3" data-aos="flip-up">
+                                        <label class="form-label" for="phone">Phone</label>
+                                        <label class="form-control" for="fullName">
+                                            <%= u.phone %>
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card tab-pane fade bg-dark p-3" id="sent" aria-labelledby="my-offers" role="tabpanel">
+                    <% for (let offer of alloffer){%>
+                    <% if((offer.author._id).equals(u._id)){%>
+                    <div data-aos="flip-up">
+                        <div class="adv mb-3 shadow-sm">
+                            <div class="card-header row bg-light">
+                                <div class=" col-2 align-self-center ">
+                                    <img class="img-fluid rounded" alt="" src="<%=offer.author.image.url%>">
+                                </div>
+                                <div class="col-6 align-self-center">
+                                    <div class="title ml-4 d-flex">
+                                        <h4 class="mr-3">
+                                            <%=offer.author.username%>
+                                        </h4>
+                                        <h6 class="text-muted align-self-end">
+                                            <%= offer.location%>
+                                        </h6>
+                                    </div>
+                                    <div class="p-4">
+                                        <h5 class="">
+                                            <%= offer.title %>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="col-2  align-self-center p-4">
+                                    <p class="text-muted text-center border-left m-0">
+                                        <%= offer.appliers.length %> Appliers
+                                    </p>
+                                </div>
+                                <div class="col-2 align-self-center">
+                                    <a class="btn btn-outline-primary " href="/offers/<%=offer._id%>">View
+                                        Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                    <% }%>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>

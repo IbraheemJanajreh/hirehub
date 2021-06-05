@@ -1,0 +1,44 @@
+<% layout('layouts/boilerplate')%>
+
+<style>
+    body{
+        background: linear-gradient(154deg,  #1976d2ee 40% , rgba(255, 255, 255, 0) 0%),
+                    linear-gradient(214deg, #0c0c3dee 25%, rgba(0,255,0,0) 0%);
+        background-attachment: fixed;
+    }
+    .bg-light{
+        border-radius: 5%;
+        opacity: .95;
+    }
+
+</style>
+
+<div class="row col-6 offset-3" data-aos="flip-left">
+    <div class="bg-light shadow p-5 mb-5">
+        <h1 class="text-center mb-5">New Offer</h1>
+
+        <form action="/offers" method="POST" novalidate class="validated-form" data-aos="fade-left" data-aos-delay="200">
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" id="title" name="offer[title]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" id="location" name="offer[location]" required>
+            </div>
+            <!-- <input type="file" name="offer[image]" id="image" required> -->
+            <!-- <div class="mb-3">
+                <label class="form-label" for="image">Image Url</label>
+                <input class="form-control" type="text" id="image" name="offer[image]" required>
+            </div> -->
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" rows="5" type="text" id="description" name="offer[description]" required></textarea>
+            </div>
+            <div class="row mt-5 justify-content-center">
+                    <button class="btn btn-primary col-6">Add Offer</button>
+            </div>
+        </form>
+    </div>
+</div>
+

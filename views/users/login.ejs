@@ -1,0 +1,49 @@
+<% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/login.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <h1 class="mb-5 text-center">Login</h1>
+  <div class="login_container container shadow-lg bg-light p-5 pt-3 rounded" data-aos="fade-right"  data-aos-delay="50">
+      <div class="row justify-content-center">
+        <div class="col-2 align-self-center">
+            <div class="text-muted">
+                <h6>Company</h6> 
+            </div>
+            <a href="/company/login" id="btn-toggle" class="btn btn-outline-primary col-1 align-items-center mr-3 pt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right align-self-center" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-7">
+            <h3 class="text-center text-muted mb-4">Developers</h3>
+            <form action="/user/login" method="POST" class="validated-form" novalidate>
+                <div class="mb-3">
+                    <label class="form-label" for="username">Username</label>
+                    <input class="form-control" type="text" id="username" name="username" autofocus required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label mt-3" for="password">Password</label>
+                    <input class="form-control mb-5" type="password" id="password" name="password" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <button class="btn btn-outline-primary btn-block">Login</button>
+            </form>           
+        </div>
+        <div class="col-2"></div>
+        
+    </div>
+    
+</div>
+
+
+
+
+

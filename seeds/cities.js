@@ -1,0 +1,32 @@
+module.exports=[
+    {
+        city:"Ramallah",
+        Latitude:31.903927828460837, 
+        Longitude:35.197666996749994
+    },
+    {
+        city:"Jerusalem",
+        Latitude:31.766473584991413, 
+        Longitude:35.207623726287856
+    },
+    {
+        city:"Nablus",
+        Latitude:32.22278607756279,
+        Longitude:35.26165185264017
+    },
+    {
+        city:"Tulkarm",
+        Latitude:32.320127947349704, 
+        Longitude:35.0255198113934
+    },
+    {
+        city:"Qalqilya",
+        Latitude:32.19572366793057, 
+        Longitude:34.981298391765165
+    },
+    {
+        city:"Jenin",
+        Latitude:32.46492482685544, 
+        Longitude:35.293287533415004
+    }
+]

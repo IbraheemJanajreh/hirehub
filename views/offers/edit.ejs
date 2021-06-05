@@ -1,0 +1,41 @@
+<% layout('layouts/boilerplate')%>
+<style>
+    body{
+        background: linear-gradient(154deg,  #1976d2ee 40% , rgba(255, 255, 255, 0) 0%),
+                    linear-gradient(214deg, #0c0c3dee 25%, rgba(0,255,0,0) 0%);
+        background-attachment: fixed;
+    }
+    .bg-light{
+        border-radius: 5%;
+        opacity: .95;
+    }
+</style>
+<div class="row col-6 offset-3" data-aos="flip-right">
+    <div class="p-5 shadow bg-light mb-5">
+        <h1 class="text-center my-3">Edit Offer</h1>
+        
+        <form action="/offers/<%=offer._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" id="title" name="offer[title]"
+                    value="<%=offer.title %>" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" id="location" name="offer[location]"
+                    value="<%=offer.location %>" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" rows="5" type="text" id="description"
+                    name="offer[description]" required><%= offer.description%></textarea>
+            </div>
+            <div class="my-5">
+                <button class="btn btn-info">Update offer</button>
+                <a href="/offers/<%= offer._id%>" class="btn btn-outline-secondary">Cancle</a>
+
+            </div>
+        </form>
+    </div>
+</div>

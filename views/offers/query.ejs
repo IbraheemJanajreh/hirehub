@@ -1,0 +1,49 @@
+<% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/offers.css">
+
+<div class="row mt-5">
+    <% if(cityOffer.length == 0){ %> 
+
+        <h3 class="text-light m-5">No results!</h3>
+    <% }else{ %> 
+        <% for (let offer of cityOffer){%>
+            <% if(offer == cityOffer[0]){ %> 
+                <div class="adv mb-4 shadow-sm " >
+                    <% }else{ %> 
+                <div class="adv mb-4 shadow-sm " data-aos="fade-up">
+                        <% } %> 
+                    <div class="card-header rounded p-4 pb-1">
+                        <div class="row">
+                            <div class=" col-2 align-self-start">
+                                <img class="img-fluid" alt="" src="<%=offer.author.image.url%>">
+                            </div>
+                            <div class="col-10">
+                                <div class="title ml-4 d-flex">
+                                    <a href="/company/profile/<%=offer.author._id  %> ">
+                                        <h4 class="mr-3"><%=offer.author.username%></h4>
+                                    </a>
+                                    <h6 class="text-muted align-self-end"><%= offer.location%></h6>
+                                    <small class="text-muted ml-auto align-self-center">
+                                        <%= offer.dateAgo %>
+                                    </small>
+                                </div>
+                                <div class="p-4">
+                                    <h5 class=""><%= offer.title %> </h5>
+                                    <p class="card-text"><%= offer.description.substring(0,200) %>...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <a class="btn view_details border-top rounded-0 text-primary" href="/offers/<%=offer._id%>" data-aos="fade-right">View Details
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        <% }%>
+    <% } %> 
+</div>

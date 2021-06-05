@@ -1,0 +1,31 @@
+body{
+    background: linear-gradient(154deg,  #1976d2f5 60%, rgba(255, 255, 255, 0) 0%),
+    linear-gradient(214deg, #0c0c3dee 35%, rgba(0,255,0,0) 0%);
+    background-attachment: fixed;
+}
+
+#btn-toggle{    
+    height: 50px;
+    width: 50px;
+}
+
+/* .row{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+} */
+.login_container{
+    width: 600px;
+    margin-bottom: 100px;
+}
+h1{
+    filter: blur(1px);
+
+}
+
+/* .btn{
+    box-shadow: inset 1px -1px 10px 15px #cde5fff5,inset -1px 1px 20px 1px #cde5fff5;
+}
+.btn:hover{
+    box-shadow: inset 1px -1px 10px 15px #5486b8f5,inset -1px 1px 20px 1px #5486b8f5;
+} */

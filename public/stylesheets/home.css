@@ -1,0 +1,249 @@
+*{
+    margin: 0;
+    color: white;
+    font-family: 'Cuprum', sans-serif;
+    /* font-family: 'Raleway', sans-serif; */
+    font-weight: 600;
+}
+.btn{
+    background-color: white;
+    color: #00264d;
+    font-weight: 700;
+    transition: ease-in .25s;
+}
+.btn:hover{
+    background-color: #00264d;
+    color: white;
+    filter: saturate(200%);
+}
+
+
+body{
+    background: linear-gradient(154deg,  #1976d2ee 40% , rgba(255, 255, 255, 0) 0%),
+                linear-gradient(214deg, #0c0c3dee 25%, rgba(0,255,0,0) 0%);
+     /* background: linear-gradient(154deg,  #1976d2f5 60%, rgba(255, 255, 255, 0) 0%),
+    linear-gradient(214deg, #0c0c3dee 35%, rgba(0,255,0,0) 0%); */;
+    margin: 0;
+    width: auto;
+}
+
+
+/* the div of background-------------------- */
+.bg{
+    width: 100%;
+    height: 100vh;
+    /* clip-path: polygon(0 0, 100% 0, 100% 68%, 0% 100%); */
+    /* border-radius: 0  0 90% 0 ; */
+    
+    /* box-shadow:
+        inset 0 -5em 3em rgba(0, 64, 94, 0.267),
+              0.3em 0.7em 1em rgba(0,0,0,0.3); */
+    display: flex;
+    
+}
+    /* box-shadow: 2px 2px 5px 1px #007081; */
+
+
+.info{
+    
+    display: flex;
+    position: relative;
+    padding: 50px;
+    align-items: center;
+    
+}
+#dd{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+h1{
+    letter-spacing: 10px;
+}
+
+.log{
+    width: 450px;
+    height: 500px;
+    background-color: white ;
+    margin: 100px;
+    border-bottom: 2px solid gray;
+    filter: drop-shadow(5px 10px 5px gray);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    /* opacity: .95; */
+
+}
+.nav{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+}
+.nav label{
+    width: 50%;
+    color: #1976d2;
+    font-weight: 900;
+    border:none;
+    padding: 10px;
+    background: none;
+    text-align: center;
+    text-decoration: none;
+}
+.nav input{
+    visibility: hidden;
+}
+
+.hah{
+    border-left: 1px solid rgba(128, 128, 128, 0.507);
+}
+
+nav .choosen{
+    border-bottom: 2px solid #1976d2;
+}
+
+input{
+    font-size: 10px;
+}
+label{
+    color: rgba(0, 0, 0, 0.555);
+}
+#lradio2{
+    border-left: 1px solid rgba(0, 0, 0, 0.301);
+}
+.form{
+    padding: 50px;
+    font-size: small;
+    
+    
+}
+
+/* .btn{
+    box-shadow:
+        inset 0 -5em 5em rgba(0, 64, 94, 0.123),
+              0.3em 0.2em .3em rgba(0,0,0,0.3);
+    font-weight: 800;
+} */
+
+
+/* فقرة الشرح عن الموقع ------------------ */
+
+.para{
+    width: 400px;
+    margin: 10px 100px;
+    margin-bottom: 50px;
+    font-size: medium;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 1px;
+}
+.botton{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    
+    
+}
+.botton label{
+    font-size: smaller;
+    padding: 5px 0 0 10px;
+   
+}
+#signbutton{
+    margin-top: 20px;
+    color: #1976d2;
+    background-color: white;
+    font-weight: bold;
+}
+::selection{
+    background-color: white;
+    color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*the div of logo ----------------------- */
+
+.logo{
+    width: 70px;
+    height: 70px;
+    /* display : flex;
+    justify-content: center;
+    align-items: center; */
+}
+img{
+    width: 100%;
+    height: 100%;
+    margin-top: -10px;
+}
+
+
+
+/* the H logo ------------------------ */
+
+/* #bass{
+    height: 70%;
+    width: 10%;
+    border: 3px solid yellow;
+    border-radius: 100%;
+    
+}
+#bass1{
+    height: 10%;
+    width: 60%;
+    border: 3px solid yellow;
+    border-radius: 100%;
+
+}
+#bass2{
+    height: 110%;
+    width: 10%;
+    border: 3px solid yellow;
+    border-radius: 50%;
+} */
+
+
+/*---------------------------------------
+     FOOTER              
+  -----------------------------------------*/
+
+
+
+/* make the site responseve ---------------------- */
+
+@media(max-width: 1050px ){
+    body{
+        background-color: #1976d2;
+    }
+    .bg{
+        flex-direction: column;
+    }
+    .log{
+        width: 100%;
+        margin-left: 0;
+    }
+    footer{
+        margin-top: 600px;
+    }
+
+}
+.nav label:hover{
+    background-color: rgba(92, 200, 236, 0.274);
+}
+
+

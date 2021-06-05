@@ -1,0 +1,126 @@
+<style>
+    .nav-link {
+        padding: 3px;
+    }
+
+    .nav-link:hover {
+        border-bottom: 1px solid #1976d2;
+        margin-top: 1px;
+    }
+
+    .sticky-top {
+        padding-top: 15px;
+    }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/stylesheets/notifications.css">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark navbar navbar-expand-lg" style="width: inherit;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">HireHub</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse bg-dark" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link px-3" href="/">Home</a>
+                <a class="nav-link px-3" href="/offers">Offers</a>
+                <% if(typeof currentUser!=='undefined'&&currentUser&&currentUser.company){ %>
+                <a class="nav-link px-3" href="/offers/new">New Offer</a>
+                <% } %>
+
+
+            </div>
+            <div class="navbar-nav ml-auto">
+                <% if(typeof currentUser!=='undefined'&&currentUser && !currentUser.company){ %>
+
+                <a class="nav-link px-3" href="/user/profile/<%=currentUser._id%>">
+                    <img src="<%= currentUser.image.url %> " alt=""
+                        style="width: 25px; height: 25px; border-radius: 50%;">
+                    Profile</a>
+
+                <% } else if(typeof currentUser!=='undefined'&&currentUser) { %>
+
+                <!-- notifications -->
+
+                <div class="nav-link px-3 icon" id="bell">
+                    <span id="s" class="number badge bg-primary">
+                        <% if(notifications.length !=0){ %>
+                        <%= notifications.length %>
+                        <% } %>
+                    </span>
+                    <img class="img_bell" src="https://i.imgur.com/AC7dgLA.png" alt=""
+                        style="width: 20px; height: 20px;">
+                </div>
+
+                <div class="notifications hide" id="box">
+                    <div class="overflow-auto" style="height:80vh;">
+                        <% for(let notification of notifications) { %>
+                        <div class="notifications-item">
+                            <a href="/user/profile/<%= notification.from._id %>"><img
+                                    src="<%= notification.from.image.url %> " alt="img"></a>
+                            <a style="text-decoration:none" href="/offers/<%= notification.where._id %>">
+                                <div class="text">
+                                    <h4>
+                                        <%= notification.where.title %>
+                                    </h4>
+                                    <small class="text-muted">
+                                        you have an apply By:
+                                        <%=notification.from.username%>
+                                    </small>
+                                </div>
+                            </a>
+
+                            <small id="date" class="ml-auto text-muted mr-3">
+                                <%= notification.dateAgo %>
+                            </small>
+                            <form class="" action="/<%= notification._id %>?_method=DELETE" method="POST" id='dd'>
+                                <button class="mb-1 close" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button><br>
+                            </form>
+                        </div>
+
+                        <% } %>
+                    </div>
+                </div>
+                <!-- notifications -->
+                <a class="nav-link mr-2 px-3" href="/company/profile/<%=currentUser._id%>">
+                    <img src="<%= currentUser.image.url %> " alt=""
+                        style="width: 25px; height: 25px; border-radius: 50%;">
+                    Profile</a>
+
+
+                <% } %>
+                <% if(typeof currentUser!=='undefined'&&currentUser){ %>
+                <a class="nav-link px-3" href="/logout">Logout</a>
+                <% }else{ %>
+                <a class="nav-link px-3" href="/user/login">Login</a>
+                <a class="nav-link px-3" href="/user/register">Register</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</nav>
+<script src="/javascripts/notifications.js"></script>
+<script>
+    const notificationsIcon = document.getElementById('bell')
+    const notificationsBox = document.getElementById('box')
+    if (notificationsIcon) {
+        notificationsIcon.addEventListener('click', () => {
+            if (notificationsBox.classList.contains('hide')) {
+                notificationsBox.classList.remove('hide')
+            } else {
+                notificationsBox.classList.add('hide')
+            }
+        })
+    }
+</script>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>

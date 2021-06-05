@@ -1,0 +1,16 @@
+const express = require('express');
+const router = express.Router();
+const catchAsync = require('../utils/catchAsync');
+const users=require('../controllers/users');
+const multer=require('multer');
+const{storage}=require('../cloudinary/index.js');
+const upload=multer({storage});
+router.get('/register', users.renderRegister);
+router.post('/register',upload.single('image'), catchAsync(users.register));
+router.get('/login', users.renderLogin);
+router.post('/login', users.login);
+router.get('/profile/:id',users.renderProfile);
+router.put('/profile/:id',users.editprofile);
+router.get('/profile/:id/edit',users.renderedit);
+router.put('/profile/:id/changePhoto',upload.single('image'),users.changePhoto);
+module.exports = router;

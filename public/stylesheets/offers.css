@@ -1,0 +1,66 @@
+body{   
+    background: linear-gradient(#1976d2 , #fff);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.card-header{
+    background-color: white;
+}
+.adv{
+    max-width: 50%;
+    margin-left: 25%;
+}
+.text{
+    height: 50px;
+    overflow-wrap: break-word;
+
+}
+.card-text{
+    text-overflow: ellipsis;
+}
+img{
+    border-image-slice: fill;
+    border-radius: 5px;
+}
+.title{
+    border-bottom: 1px solid skyblue;
+}
+.title a{
+    text-decoration: none;
+}
+
+#search_form{
+    background:none ;
+    height: 20px; 
+    width: 41%; 
+    left: 30%;
+    top: 2%;
+}
+
+
+
+
+
+
+@media(max-width:500px){
+    #search_form{
+        left: 0%;
+        width: 100%;
+        padding: 0;
+        margin: 8% 0;
+        z-index: -1;
+    }
+    
+}
+@media(max-width:1000px){
+    .adv{
+        max-width: 100%;
+        margin: 0;
+    }
+    .card-header{
+        width: 100%;
+    }
+    
+}
+

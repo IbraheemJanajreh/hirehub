@@ -1,0 +1,79 @@
+body , .card{
+    background: linear-gradient(154deg,  #1976d2ee 40% , rgba(255, 255, 255, 0) 0%),
+                linear-gradient(214deg, #0c0c3dee 25%, rgba(0,255,0,0) 0%);
+    background-attachment: fixed;            
+}
+.row{
+    width: 100%;
+    --bs-gutter-x: 0;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid transparent;
+    border-radius: 0;
+}
+.card-body{
+    margin: 0;
+}
+/* .card_img{
+    object-fit: cover;
+    height: 200px;
+} */
+
+.file {
+    position: absolute;
+    overflow: hidden;
+    top: 81%;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+
+.card-tilte{
+    background: #2c3e50;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2c3e50, #3498db);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2c3e50, #3498db); 
+    
+}
+
+.mailbox-widget .custom-tab .nav-item .nav-link {
+    border: 0;
+    color: #fff;
+    border-bottom: 3px solid transparent;
+}
+.mailbox-widget .custom-tab .nav-item .nav-link.active {
+    background: 0 0;
+    color: #fff;
+    border-bottom: 3px solid #1976d2f5;
+}
+.no-wrap td, .no-wrap th {
+    white-space: nowrap;
+}
+.table td, .table th {
+    padding: .9375rem .4rem;
+    vertical-align: top;
+    border-top: 1px solid rgba(120,130,140,.13);
+}
+.font-light {
+    font-weight: 300;
+}
+.card-header{
+    background-color: #fffffff1;
+}
+.toast-header{
+    background-color: #e0d9d9f1;
+}

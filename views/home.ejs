@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Redressed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/home.css">
+    <title>Get Started</title>
+</head>
+<body>
+
+    
+    <div class="bg" style="z-index: -1;">
+        <div id="dd" >
+        <section class="info">
+        <div class="logo" data-aos="fade-right" data-aos-delay="150">
+            <!-- <div id="bass2"></div>
+            <div id="bass1"></div>
+            <div id="bass"></div> -->
+            <img src="/images/logo-icon.png" alt="">
+        </div>
+        <h1 class="display-5 fw-bolder" data-aos="fade-left">Hire Hub</h1>
+        </section>
+        <section class="para" data-aos="fade-in">The project introduces the idea of a website to solve the aforementioned problem, as the site includes all the offers of the companies offered for employment or training, and the student or graduate person remains to choose what suits him jobs easily, by submitting an attached application with his personal information to the intended company        
+
+        </section>
+
+        <% if(currentUser){ %>
+            <section class="container">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <a href="/offers" class="btn col-4 rounded-pill">Get Started</a>
+                </div>
+            </section>
+        <% }else{ %> 
+            <section class="container">
+                <div class="row justify-content-evenly">
+                    <a href="/user/login" class="btn col-3">Log In</a>
+                    <a href="/user/register" class="btn col-3">Sign Up</a>                
+                </div>
+            </section>
+        <% } %> 
+    </div>
+        
+</div>
+
+    <%- include('./partials/footer')%>
+
+
+
+ 
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/login.css">
+
+
+  
+
+<h1 class="mb-5 text-center">Register</h1>
+
+<div class="login_container container shadow-lg bg-light p-5 pt-3 rounded" data-aos="fade-left"  data-aos-delay="50">
+    <div class="row justify-content-center">
+        <div class="col-2"></div>
+        <div class="col-7 " >
+            <h3 class="text-center text-muted mb-4">Company</h3>
+            <form action="/company/register" method="POST" class="validated-form" novalidate enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="fullName">Full Name</label>
+                    <input class="form-control" type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="username">Username</label>
+                    <input class="form-control" type="text" id="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-control" type="email" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="password">Password</label>
+                    <input class="form-control" type="password" id="password" name="password" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="phone">Phone</label>
+                    <input class="form-control" type="text" id="phone" name="phone" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Profile Image</label>
+                    <input class="form-control" type="file" name="image" id="image" required>
+                </div>
+                <button class="btn btn-outline-success btn-block">Register</button>
+            </form>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-2 align-self-center">
+            <div class="text-muted">
+               <h6>Developer</h6> 
+            </div>
+            <a href="/user/register" id="btn-toggle" class="btn btn-outline-success col-1 align-items-center mr-3 pt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>

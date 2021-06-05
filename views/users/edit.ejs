@@ -1,0 +1,174 @@
+<% layout('layouts/boilerplate')%>
+
+<style>
+    body{
+        background: linear-gradient(154deg,  #1976d2ee 40% , rgba(255, 255, 255, 0) 0%),
+                    linear-gradient(214deg, #0c0c3dee 25%, rgba(0,255,0,0) 0%);
+        background-attachment: fixed;
+    }
+</style>
+
+<div class="container d-flex justify-content-center align-items-center mt-3 mb-5">
+    <div class="row" data-aos="flip-left">
+        <div class="col-md-12 offset-md-3 col-xl-6 offset-xl-3">
+            <div class="card shadow">
+                <div class="card-body" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="card-title text-center">Edit Profile</h3>
+                    
+                    <form method="POST" action="/user/profile/<%=u._id%>?_method=PUT" class="validated-form p-4" novalidate>
+                        <h5 class="card-subtitle mb-4 border-bottom text-muted">Your Basic Info</h5>
+                        <div class="mb-3">
+                            <label class="form-label" for="fullName">Full Name</label>
+                            <input class="form-control" type="text" id="fullName" name="fullName" required
+                                value="<%= u.fullName %>" autofocus>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        
+
+                        <h5 class="card-subtitle mb-4 mt-5 border-bottom text-muted">Your Profile</h5>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="phone">Phone</label>
+                            <input class="form-control" type="text" id="phone" name="phone" value="<%= u.phone %>"
+                                required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="profession">Profession</label>
+                            <input class="form-control" type="text" name="profession" id="profession"
+                                value="<%= u.profession %>" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <div class="row mb-5">
+                                <label for="skills">Skills(<small class="text-muted">Separate your options with a
+                                        comma</small>)</label>
+                                <textarea class="form-control" placeholder="" id="skills" name="skill"
+                                    required><%= u.skills %>
+                                </textarea>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-info btn-block">Edit</button>
+                            </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- <% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/profile.css">
+<div class="container emp-profile">
+    <div class="row">
+        <div class="col-md-4">
+
+            <form method="POST" action="/user/profile/<%=u._id%>?_method=PUT" class="validated-form" novalidate>
+                <div class="profile-img">
+                    <img src="<%= u.image.url %>" alt="" />
+                    <%  if (currentUser&& u.equals(currentUser)){ %>
+                    <div class="file btn btn-lg btn-primary">
+                        <a href="">Change Photo</a>
+                        <input class="form-control" type="file" name="image" id="image" onchange="form.submit()">
+                    </div>
+                    <% } %>
+                </div>
+            
+        </div>
+        <div class="col-md-4">
+            <div class="profile-head">
+                <h5>
+                    <%= u.username %>
+                </h5>
+                <input class="wide form-control" value="<%= u.profession %>">
+                    
+                
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                            aria-controls="home" aria-selected="true">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-1 ml-5 mr-2">
+            <button class="btn btn-outline-success px-4">Done</button>
+        </div>
+        <div class="col-1">
+            <a class="btn btn-outline-secondary" href="/user/profile/<%= u._id %>">Cancle</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-work">
+                <p>SKILLS</p>
+                <% for(let s of u.skills){ %>
+                <a href=""><%= s %> </a><br />
+                <% } %>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="tab-content profile-tab" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                    <div class="row mb-1">
+                        <div class="col-md-4">
+                            <label class="text-muted">Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" value="<%= u.fullName %>">
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-md-4">
+                            <label class="text-muted">Email</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" value="<%= u.email %>">
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-md-4">
+                            <label class="text-muted">Phone</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" value="<%= u.phone %>">
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-md-4">
+                            <label class="text-muted">Profession</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" value="<%= u.profession %>">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+</div>
+</div> -->

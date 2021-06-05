@@ -1,0 +1,95 @@
+<% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/profile.css">
+<div class="container emp-profile">
+    <div class="row">
+        <div class="col-md-4">
+
+            <form action="/user/profile/<%= u._id %>/changePhoto?_method=PUT" method="POST"
+                enctype="multipart/form-data">
+                <div class="profile-img">
+                    <img src="<%= u.image.url %>" alt="" data-aos="zoom-in" />
+                    <%  if (currentUser&& u.equals(currentUser)){ %>
+                    <div class="file btn btn-lg btn-primary">
+                        Change Photo
+                        <input class="form-control" type="file" name="image" id="image" onchange="form.submit()">
+                    </div>
+                    <%}  %>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="profile-head">
+                <h5>
+                    <%= u.username %>
+                </h5>
+                <h6 class="wide">
+                    <%= u.profession %>
+                </h6>
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                            aria-controls="home" aria-selected="true">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <%  if (currentUser&& u.equals(currentUser)){ %>
+
+        <div class="col-md-2">
+            <a class="btn btn-outline-primary px-5" href="/user/profile/<%= u._id %>/edit">Edit</a>
+        </div>
+        <%  }%>
+    </div>
+    <div class="row">
+        <div class="col-md-4 overflow-auto"  style="height: 150px;">
+            <div class="profile-work">
+                <p>SKILLS</p>
+                <% for(let s of u.skills){ %>
+                <a href=""><%= s %> </a><br />
+                <% } %>
+            </div>
+        </div>
+        <div class="mx-2 col-md-4">
+            <div class="tab-content profile-tab" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p><%= u.fullName %> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Email</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p><%= u.email %> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Phone</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p><%= u.phone %></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Profession</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p><%= u.profession %> </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

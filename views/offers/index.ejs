@@ -1,0 +1,61 @@
+<% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/offers.css">
+
+<form class="fixed-top row" action="offers/citysearch" data-aos="fade-down" data-aos-delay="50" method="post"
+ id="search_form">
+    <div class="input-group mb-3 p-0">
+        <button type="submit" class="btn" role="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-search"
+                viewBox="0 0 16 16">
+                <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg>
+        </button>
+        <input type="search" class="form-control bg-transparent  border-0 border-bottom rounded-0 text-light"
+            placeholder="search by city" aria-label="Search" aria-describedby="search-addon" id="city" name="city" />
+
+    </div>
+</form>
+
+
+
+<% for (let offer of offers){ %>
+    <% if(offer == offers[0]){ %> 
+<div class="adv mb-4 shadow-sm " >
+    <% }else{ %> 
+<div class="adv mb-4 shadow-sm " data-aos="fade-up">
+        <% } %> 
+    <div class="card-header rounded p-4 pb-1">
+        <div class="row">
+            <div class=" col-2 align-self-start">
+                <img class="img-fluid" alt="" src="<%=offer.author.image.url%>">
+            </div>
+            <div class="col-10">
+                <div class="title ml-4 d-flex">
+                    <a href="/company/profile/<%=offer.author._id  %> ">
+                        <h4 class="mr-3"><%=offer.author.username%></h4>
+                    </a>
+                    <h6 class="text-muted align-self-end"><%= offer.location%></h6>
+                    <small class="text-muted ml-auto align-self-center">
+                        <%= offer.dateAgo %>
+                    </small>
+                </div>
+                <div class="p-4">
+                    <h5 class=""><%= offer.title %> </h5>
+                    <p class="card-text"><%= offer.description.substring(0,200) %>...</p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <a class="btn view_details border-top rounded-0 text-primary" href="/offers/<%=offer._id%>" data-aos="fade-right">View Details
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+<% }%>
+</div>
